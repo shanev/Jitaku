@@ -2,6 +2,14 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+function Light(props) {
+  return (
+    <button className="light" onClick={props.onClick}>
+      {props.name}
+    </button>
+  );
+}
+
 class App extends Component {
   render() {
     return (
@@ -13,6 +21,9 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <div className="lights">
+          <Light name="Test light" />
+        </div>
       </div>
     );
   }
