@@ -6,10 +6,8 @@ import './App.css';
 function Light(props) {
   function handleClick(e) {
     e.preventDefault();
-    console.log('Button was clicked.')
-    setLight();
+    setLight(props.id, !props.on);
   }
-
   return (
     <button className="light" onClick={handleClick}>
       {props.name}
@@ -17,25 +15,37 @@ function Light(props) {
   );
 }
 
+function LightList(props) {
+  const lights = props.lights;
+  const listItems = lights.map((light) =>
+    <li key={light.id}>
+      <Light id={light.id} name={light.name} on={light.state.on} />
+    </li>
+  );
+  return (
+    <ul>{listItems}</ul>
+  );
+}
+
 class App extends Component {
   constructor() {
     super();
-    this.state = { lights: [] };
+    var testLight = {};
+    testLight["id"] = 0;
+    testLight["name"] = "test";
+    testLight["state"] = { on: true };
+    this.state = { lights: [testLight] };
   }
 
   componentDidMount() {
-    getLights().then((data) => {
-      console.log(data[0]);
-      this.setState( {
-        lights: [data[0].name, data[1].name]});
+    getLights().then((lights) => {
+      this.setState( { lights } );
+    }).catch((err) => {
+      console.log(err);
     });    
   }
 
   render() {
-    const listItems = this.state.lights.map((light) => 
-      <li><Light name={light} /></li>
-    );
-
     return (
       <div className="App">
         <header className="App-header">
@@ -46,7 +56,7 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <div className="lights">
-          <ul>{listItems}</ul>
+          <LightList lights={this.state.lights}/>
         </div>
       </div>
     );

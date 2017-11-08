@@ -80,13 +80,12 @@ export function getLights() {
     });
 }
 
-export function setLight() {
-  const lightId = 2;
+export function setLight(lightId, on) {
   const url = baseUrl + userId + '/lights/' + lightId + '/state';
   return axios.put(url, {
-    on: true
+    on: on
   }).then((res) => {
-    console.log(res);
+    // console.log(res);
   }).catch((err) => {
     console.log(err);
   });
