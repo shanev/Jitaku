@@ -6,7 +6,8 @@ Roadmap:
 - [X] Turn off/on Hue lights
 - [ ] Color picker
 - [ ] Brightness slider
-- [ ] Plugin architecture for other components
+- [ ] Plugin architecture for other devices
+- [ ] iHome SmartPlug component
 
 ## Running
 
