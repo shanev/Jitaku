@@ -1,7 +1,20 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 import logo from './logo.svg';
 import { getLights, setLight } from './utils/api';
 import './App.css';
+
+const Button = styled.button`
+  /* Adapt the colours based on primary prop */
+  background: ${props => props.primary ? 'palevioletred' : 'white'};
+  color: ${props => props.primary ? 'white' : 'palevioletred'};
+
+  font-size: 2em;
+  margin: 1em;
+  padding: 0.35em 1em;
+  border: 2px solid palevioletred;
+  border-radius: 3px;
+`;
 
 function Light(props) {
   function handleClick(e) {
@@ -12,9 +25,9 @@ function Light(props) {
     });
   }
   return (
-    <button className="light" onClick={handleClick}>
+    <Button primary={props.on} onClick={handleClick}>
       {props.name}
-    </button>
+    </Button>
   );
 }
 
