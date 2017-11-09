@@ -1,6 +1,6 @@
 # Jitaku
 
-Jitaku is a home automation dashboard. Currently it only works with Philips Hue lights.
+Jitaku is a home automation dashboard built with React. Currently it only works with Philips Hue lights.
 
 Roadmap:
 - [X] Turn off/on Hue lights
