@@ -6,7 +6,10 @@ import './App.css';
 function Light(props) {
   function handleClick(e) {
     e.preventDefault();
-    setLight(props.id, !props.on);
+    setLight(props.id, !props.on).then((res) => {
+      console.log(res);
+      window.location.reload();
+    });
   }
   return (
     <button className="light" onClick={handleClick}>
